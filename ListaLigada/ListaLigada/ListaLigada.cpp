@@ -8,6 +8,7 @@ struct NO {
 };
 
 NO* primeiro = NULL;
+NO* ultimo = NULL;
 
 // headers
 void menu();
@@ -72,6 +73,7 @@ void inicializar()
 	// se a lista já possuir elementos
 // libera a memoria ocupada
 	NO* aux = primeiro;
+	NO* ultimo = NULL;
 	while (aux != NULL) {
 		NO* paraExcluir = aux;
 		aux = aux->prox;
