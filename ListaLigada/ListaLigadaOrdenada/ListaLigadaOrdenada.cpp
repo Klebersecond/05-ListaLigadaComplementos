@@ -8,6 +8,8 @@ struct NO {
 };
 
 NO* primeiro = NULL;
+NO* atual = primeiro;
+NO* anterior = NULL;
 
 // headers
 void menu();
@@ -129,6 +131,17 @@ void inserirElemento()
 	{
 		primeiro = novo;
 	}
+	/*else if (atual != NULL && atual->valor == novo->valor) {
+		cout << "O VALOR JA EXISTE. INSIRA OUTRO." << endl;
+		free(novo);
+		return;
+	}*/
+	//else if (anterior == NULL) {
+	//	primeiro = novo;
+	//}
+	//else if (anterior != NULL) {
+	//	anterior->prox = novo;
+	//}
 	else
 	{
 		// procura o final da lista
@@ -138,8 +151,8 @@ void inserirElemento()
 		}
 		aux->prox = novo;
 	}
+	novo->prox = atual;
 }
-
 void excluirElemento()
 {
 
@@ -150,4 +163,12 @@ void buscarElemento()
 
 }
 
+NO* posicaoElemento() {
+	NO* novo = (NO*)malloc(sizeof(NO));
 
+	while (atual != NULL && atual->valor < novo->valor) {
+		anterior = atual;
+		atual = atual->prox;
+	}
+	return;
+}
