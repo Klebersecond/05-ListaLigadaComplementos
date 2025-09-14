@@ -190,7 +190,19 @@ void excluirElemento()
 
 void buscarElemento()
 {
+	int buscar;
 
+	cout << "digite o valor que deseja :";
+	cin >> buscar;
+
+	if (posicaoElemento(buscar) != NULL) {
+		cout << "ENCONTRADO" << endl;
+
+	}
+
+	else {
+		cout << "ELEMENTO NAO ENCONTRADO" << endl;
+	}
 }
 
 NO* posicaoElemento(int numero)
