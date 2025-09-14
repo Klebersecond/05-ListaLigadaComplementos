@@ -8,8 +8,6 @@ struct NO {
 };
 
 NO* primeiro = NULL;
-NO* atual = primeiro;
-NO* anterior = NULL;
 
 // headers
 void menu();
@@ -123,35 +121,40 @@ void inserirElemento()
 		return;
 	}
 
+	NO* atual = primeiro;
+	NO* anterior = NULL;
+
 	cout << "Digite o elemento: ";
 	cin >> novo->valor;
 	novo->prox = NULL;
 
-	if (primeiro == NULL)
+	while (atual != NULL && atual->valor < novo->valor) {
+		anterior = atual;
+		atual = atual->prox;
+	}
+
+	/*impedir valores duplicados*/
+	 if (atual != NULL && atual->valor == novo->valor) {
+		cout << "O elemento ja existe.Digite outro." << endl;
+		return;
+	}
+	
+	else if (primeiro == NULL || anterior == NULL)
 	{
 		primeiro = novo;
 	}
-	/*else if (atual != NULL && atual->valor == novo->valor) {
-		cout << "O VALOR JA EXISTE. INSIRA OUTRO." << endl;
-		free(novo);
-		return;
-	}*/
-	//else if (anterior == NULL) {
-	//	primeiro = novo;
-	//}
-	//else if (anterior != NULL) {
-	//	anterior->prox = novo;
-	//}
+	else if (anterior != NULL) {
+		anterior->prox = novo;
+	}
 	else
 	{
 		// procura o final da lista
 		NO* aux = primeiro;
-		while (aux->prox != NULL) {
+		while (aux->prox != NULL){
 			aux = aux->prox;
 		}
 		aux->prox = novo;
 	}
-	novo->prox = atual;
 }
 void excluirElemento()
 {
@@ -160,15 +163,11 @@ void excluirElemento()
 
 void buscarElemento()
 {
+	NO* aux = primeiro;
+	numero = posicaoElemento();
+	cout << "Digite o elemento que deseja buscar:"; 
+	>> cin >> buscar;
 
-}
+	if (aux->valor == numero)
 
-NO* posicaoElemento() {
-	NO* novo = (NO*)malloc(sizeof(NO));
-
-	while (atual != NULL && atual->valor < novo->valor) {
-		anterior = atual;
-		atual = atual->prox;
-	}
-	return;
 }
