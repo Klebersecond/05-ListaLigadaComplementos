@@ -190,6 +190,7 @@ void excluirElemento()
 	}
 
 void buscarElemento()
+
 {
 	int numero;
 
