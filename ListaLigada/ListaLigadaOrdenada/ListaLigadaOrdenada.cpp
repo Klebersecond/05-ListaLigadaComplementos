@@ -193,7 +193,8 @@ void buscarElemento()
 {
 	int numero;
 
-	cout << "Digite o elemento que deseja buscar"; cin >> numero;
+	cout << "Digite o elemento que deseja buscar: \n"; 
+	cin >> numero;
 
 	NO* aux = primeiro;
 	while (aux != NULL) {
