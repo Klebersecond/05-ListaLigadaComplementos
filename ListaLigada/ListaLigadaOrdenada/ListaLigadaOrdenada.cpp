@@ -222,4 +222,5 @@ NO* posicaoElemento(int numero)
 		aux = aux->prox;
 	}
 	return aux;
+
 }
