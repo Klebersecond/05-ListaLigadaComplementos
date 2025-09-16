@@ -208,7 +208,6 @@ void buscarElemento()
 
 	cout << "NAO ENCONTRADO" << endl;
 
-
 }
 
 NO* posicaoElemento(int numero)
