@@ -114,46 +114,41 @@ void exibirElementos()
 
 void inserirElemento()
 {
-	// aloca memoria dinamicamente para o novo elemento
+	 /*aloca memoria dinamicamente para o novo elemento*/
 	NO* novo = (NO*)malloc(sizeof(NO));
 	if (novo == NULL)
 	{
 		return;
 	}
-
-	NO* atual = primeiro;
-	NO* anterior = NULL;
-
-	cout << "Digite o elemento: ";
+	cout << "digite o elemento: ";
 	cin >> novo->valor;
 	novo->prox = NULL;
 
-	while (atual != NULL && atual->valor < novo->valor) {
-		anterior = atual;
-		atual = atual->prox;
-	}
-
-	/*impedir valores duplicados*/
-	 if (atual != NULL && atual->valor == novo->valor) {
-		cout << "O elemento ja existe.Digite outro." << endl;
-		return;
-	}
-	
-	else if (primeiro == NULL || anterior == NULL)
+	if (primeiro == NULL)
 	{
 		primeiro = novo;
 	}
-	else if (anterior != NULL) {
-		anterior->prox = novo;
-	}
-	else
-	{
-		// procura o final da lista
-		NO* aux = primeiro;
-		while (aux->prox != NULL){
-			aux = aux->prox;
+	else {
+		NO* atual = primeiro;
+		NO* anterior = NULL;
+
+		while (atual != NULL && atual->valor < novo->valor) {
+			anterior = atual;
+			atual = atual->prox;
 		}
-		aux->prox = novo;
+	if (atual != NULL && atual->valor == novo->valor) {
+		cout << "o elemento ja existe.digite outro." << endl;
+	}
+	else {
+		if (anterior == NULL) {
+			primeiro = novo;
+		}
+		else {
+			anterior->prox = novo;
+			novo->prox = atual;
+			anterior = atual;
+		}
+	}
 	}
 }
 void excluirElemento()
